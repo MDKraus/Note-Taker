@@ -19,7 +19,7 @@ app.get('/notes', (req, res) => {
 });
 
 app.get('/api/notes', (req, res) => {
-  const notes = JSON.parse(fs.readFileSync('./db/db.json', 'utf8')) || [];
+  const notes = JSON.parse(fs.readFileSync(path.join(__dirname, 'db', 'db.json'), 'utf8')) || [];
   res.json(notes);
 });
 
