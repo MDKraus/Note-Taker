@@ -11,17 +11,21 @@ app.use(express.json());
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));    
-  });
-  
+  console.log('Handling request to /');
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
 app.get('/notes', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'notes.html'));    
+  console.log('Handling request to /notes');
+  res.sendFile(path.join(__dirname, 'public', 'notes.html'));
 });
 
 app.get('/api/notes', (req, res) => {
+  console.log('Handling request to /api/notes');
   const notes = JSON.parse(fs.readFileSync(path.join(__dirname, 'public', 'db', 'db.json'), 'utf8')) || [];
   res.json(notes);
 });
+
 
 app.post('/api/notes', (req, res) => {
   const newNote = req.body;
