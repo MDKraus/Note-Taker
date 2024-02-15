@@ -5,8 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "build": "npm install && npm run copy-assets && echo 'Build complete'",
-    "copy-assets": "xcopy /E /I public dist"
+    "build": "npm install && npm run copy-assets && echo 'Build complete'"
   },
   "author": "",
   "license": "ISC",
