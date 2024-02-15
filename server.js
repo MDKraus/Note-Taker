@@ -19,7 +19,7 @@ app.get('/notes', (req, res) => {
 });
 
 app.get('/api/notes', (req, res) => {
-  const notes = JSON.parse(fs.readFileSync(path.join(__dirname, 'db', 'db.json'), 'utf8')) || [];
+  const notes = JSON.parse(fs.readFileSync(path.join(__dirname, 'public', 'db', 'db.json'), 'utf8')) || [];
   res.json(notes);
 });
 
@@ -28,8 +28,7 @@ app.post('/api/notes', (req, res) => {
   const notes = JSON.parse(fs.readFileSync('./db/db.json', 'utf8')) || [];
   newNote.id = Date.now();
   notes.push(newNote);
-  fs.writeFileSync('./db/db.json', JSON.stringify(notes));
-  res.json(newNote);
+  fs.writeFileSync(path.join(__dirname, 'public', 'db', 'db.json'), JSON.stringify(notes));
 });
 app.delete('/api/notes/:id', (req, res) => {
   const noteId = parseInt(req.params.id);
